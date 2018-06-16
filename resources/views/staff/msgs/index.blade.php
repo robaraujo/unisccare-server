@@ -84,7 +84,11 @@
 			</div>
 			<div class="no-chat center mt-5" data-bind="if: !slUser.id()">
 				<img class="mr-auto rounded-circle img-fluid" data-bind="attr: {src: getPicture(CONFIG.staff.picture, 'staffs')}">
-				<div class="title1 mx-4">Mantenha seus pacientes sempre informados</div>
+				<div class="mx-4">
+					<div class="title1">Mantenha seus pacientes sempre informados</div>
+					<hr>
+					<div class="daily-word"><b>"</b>Frase inpiradora diária aqui<b>"</b></div>
+				</div>
 			</div>
 		</div>
 	</div>

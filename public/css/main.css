@@ -44,6 +44,15 @@
 .hidden {
   display: none;
 }
+.title1 {
+    color: #4b5961;
+    font-size: 32px;
+    font-weight: 300;
+}
+.daily-word {
+    font-weight: 300;
+    font-size: 14px;
+}
 .loading-gif {
     display: none;
 	position: fixed;
