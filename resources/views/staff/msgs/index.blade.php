@@ -16,7 +16,10 @@
 						<img class="user-img p-2" data-bind='attr: {src: chatApp.getPicture($data.picture, "users")}'/>
 					</div>
 					<div class="col-8 col-sm-9 col-lg-10 mt-2">
-						<div class="chat-client-name" data-bind="text: first_name"></div>
+						<div class="chat-client-name">
+							<span data-bind="text: first_name"></span>
+							<span class="d-none d-md-inline-block" data-bind="text: last_name"></span>
+						</div>
 						<small class="chat-last-msg" data-bind="text: $data.last_msg ? $data.last_msg.content : ''"></small>
 					</div>
 				</div>
