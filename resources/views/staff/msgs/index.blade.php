@@ -47,7 +47,7 @@
 				<div class="container-right-content">
 					<div class="container container-msgs" data-bind="foreach: messages()">
 						<div class="msg from-user" data-bind="if: from === 'user'">
-							<div class="row mt-4 mt-sm-3 mt-md-2">
+							<div class="row mt-4 mt-sm-3">
 								<div class="col-1">
 									<img class="user-img" data-bind="attr: {src: chatApp.getPicture($parent.slUser.picture(), 'users')}">
 								</div>
@@ -62,7 +62,7 @@
 							</div>
 						</div>
 						<div class="msg from-staff" data-bind="if: from === 'staff'">
-							<div class="row mt-4 mt-sm-3 mt-md-2">
+							<div class="row mt-4 mt-sm-3">
 								<div class="offset-sm-2 col-8 col-xs-7 pr-0">
 									<div class="msg-text pull-right bg-primary text-white">
 										<span data-bind="text: content"></span>
