@@ -85,7 +85,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="no-chat center mt-5" data-bind="if: !slUser.id()">
+			<div class="no-chat center mt-3 mt-md-4 mt-lg-5" data-bind="if: !slUser.id()">
 				<img class="mr-auto rounded-circle img-fluid" data-bind="attr: {src: getPicture(CONFIG.staff.picture, 'staffs')}">
 				<div class="mx-4">
 					<div class="title1">Mantenha seus pacientes sempre informados</div>
