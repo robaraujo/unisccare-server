@@ -1,0 +1,110 @@
+/* reports page */
+.reports-menu.active li {
+	display: block;
+}
+.reports-menu ul {
+    padding: 0 !important;
+}
+.reports-menu li {
+	display: none;
+    padding: 10px 0 10px 20px !important;
+    border-left: 3px solid #3c8dbc;
+}
+.reports-menu li:hover {
+	background: #1f282d;	
+}
+.btn-inline {
+    padding-top: 24px;
+}
+.image-container {
+    min-height: 200px;
+    background-size: cover;
+}
+/* end reports page */
+
+/* diet page */
+.schedule-accepted .btn-danger{
+    display: none;
+}
+.food-item > div {
+    padding-right: 0px; 
+}
+.food-item:nth-child(1) .btn-rm, .food-item .btn-add {
+    display: none;
+}
+.food-item:nth-child(1) .btn-rm {
+    display: none;
+}
+.food-item:last-child .btn-add {
+    display: inline-block !important;
+}
+/* end diet page */
+
+/* global */
+.hidden {
+  display: none;
+}
+.loading-gif {
+    display: none;
+	position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.loading-gif img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    background: rgba(255,255,255, 0.8);
+    border-radius: 5px;
+}
+.loading-gif.overlay {
+    background: rgba(0,0,0, 0.8);
+}
+.loading-gif.overlay img {
+    background: rgba(255,255,255, 0.1);
+}
+
+.box-body form {
+    width: 100%;
+}
+.center {
+    text-align: center;
+}
+.loading-gif img {
+	padding: 6px;
+	width: 100px;
+	height: 100px;
+}
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+.triangle {
+    height: 8px;
+    width: 8px;
+    top: 12px;
+    display: block;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+}
+body::-webkit-scrollbar, .container-msgs::-webkit-scrollbar {
+    width: 5px;
+}
+ 
+body::-webkit-scrollbar-thumb, .container-msgs::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  outline: 1px solid slategrey;
+}
+.bg-primary {
+    background-color: #3c8dbc !important;
+}

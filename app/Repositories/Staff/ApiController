@@ -1,0 +1,12 @@
+<?php
+namespace App\Http\Controllers\Api;
+
+class ApiController extends AppBaseController
+{
+  public function ajaxResult($data, $success = true) {
+    die(json_encode([
+      'result'=> $data,
+      'success'=> $success
+    ]));
+  }
+}

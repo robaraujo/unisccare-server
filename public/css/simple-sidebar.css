@@ -1,0 +1,23 @@
+.main-header .sidebar-toggle {
+  padding: 5px !important;
+}
+.logo-mini img {
+  max-width: 75%;
+}
+
+.main-sidebar .image img {
+  max-height: 45px;
+}
+.sidebar-collapse .main-sidebar .image img {
+	height: 30px;
+	width: 30px;
+}
+@media only screen and (max-width: 767px) {
+	.main-sidebar {
+		padding-top: 50px;
+	}
+}
+.logo-sm {
+	width: 100%;
+	text-align: center;
+}
