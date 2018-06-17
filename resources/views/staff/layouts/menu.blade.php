@@ -30,7 +30,7 @@
 </li>
 
 
-<li class="{{ Request::is('staff/automatedMsgs*') ? 'active' : '' }}">
+<li class="{{ Request::is('staff/chat') ? 'active' : '' }}">
     <a href="{!! route('staff.msg.index') !!}"><i class="fa fa-comment"></i><span>Conversas</span></a>
 </li>
 
