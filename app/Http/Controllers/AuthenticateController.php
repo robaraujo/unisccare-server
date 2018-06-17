@@ -25,9 +25,7 @@ class AuthenticateController extends Controller
        if (!in_array($route[1], $opened)) {
          $this->user = JWTAuth::parseToken()->authenticate();
        }
-   }
-
-
+   	}
 
     /**
      * Display a listing of the resource.
@@ -85,6 +83,13 @@ class AuthenticateController extends Controller
         }
         // the token is valid and we have found the user via the sub claim
         return response()->json(compact('token'));
+    }
+
+    public function getAuthenticatedUser()
+    {
+        $user = $this->guard()->user();
+        $user->load('staff');
+        return response()->json($user);
     }
 
     public function sendAjax($data, $success = true)
