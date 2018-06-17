@@ -24,6 +24,11 @@ class MsgController extends AuthenticateController
      */
     public function index()
     {
+
+    	if (!$this->user->staff) {
+			return response()->json(['error' => 'no staff defined'], 403);
+    	}
+
         $input = Input::all();
         $msgs = Msg::where('user_id', $this->user->id)->where('id', '>', $input['last_id'])->get();
         return response()->json($msgs);

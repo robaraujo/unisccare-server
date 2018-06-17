@@ -23,7 +23,7 @@ class AuthenticateController extends Controller
 
        $route = explode('@', Route::currentRouteAction());
        if (!in_array($route[1], $opened)) {
-         $this->user = JWTAuth::parseToken()->authenticate();
+         $this->user = $this->guard()->user();
        }
    	}
 
