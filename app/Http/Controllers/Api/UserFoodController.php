@@ -27,9 +27,17 @@ class UserFoodController extends AuthenticateController
     {
         // get user diets
         $diets = [];
-        foreach (Diet::whereRaw("FIND_IN_SET(user_ids, {$this->user->id})")->get() as $row) {
-            $diets[] = $this->getDietFoods($row);
+
+        if ($this->user->staff_id) {
+          $rows = Diet::whereRaw("FIND_IN_SET(user_ids, {$this->user->id})")->orWhere(function ($query) {
+              $query->where('staff_id', '=', $this->user->staff_id)->where('user_ids', '')->orWhere('user_ids', null);
+          });
+
+          foreach ($rows->get()  as $row) {
+              $diets[] = $this->getDietFoods($row);
+          }
         }
+       
 
         // ultimas comidas consumidar por user
         $user_foods = UserFood::where('user_id', $this->user->id)
