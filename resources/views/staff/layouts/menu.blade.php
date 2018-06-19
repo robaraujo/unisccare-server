@@ -58,6 +58,10 @@
 <li class="{{ Request::is('staff/medRatings*') ? 'active' : '' }}">
     <a href="{!! route('staff.medRatings.index') !!}"><i class="fa fa-star-half-o"></i><span>Suas Avaliações</span></a>
 </li>
+<li class="{{ Request::is('staff/staff*') ? 'active' : '' }}">
+    <a href="{!! route('staff.staff.index') !!}"><i class="fa fa-users"></i><span>Sua Equipe</span></a>
+</li>
+
 <li>
     <a href="{!! url('/staff/logout') !!}"><i class="fa fa-sign-out"></i><span>Sair</span></a>
 </li>

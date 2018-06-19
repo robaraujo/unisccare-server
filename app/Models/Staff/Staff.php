@@ -16,7 +16,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string password
  * @property integer age
  * @property string gender
- * @property string bio
+ * @property string role
  * @property string clinic
  * @property string degree
  * @property string remember_token
@@ -40,7 +40,8 @@ class Staff extends Model
         'password',
         'age',
         'gender',
-        'bio',
+        'staff_admin',
+        'role',
         'clinic',
         'degree',
         'remember_token'
@@ -57,8 +58,9 @@ class Staff extends Model
         'email' => 'string',
         'password' => 'string',
         'age' => 'integer',
+        'staff_admin' => 'integer',
         'gender' => 'string',
-        'bio' => 'string',
+        'role' => 'string',
         'clinic' => 'string',
         'degree' => 'string',
         'remember_token' => 'string'
@@ -73,5 +75,9 @@ class Staff extends Model
         
     ];
 
+    public function team()
+    {
+        return $this->hasMany('App\Models\Staff\Staff', 'staff_admin');
+    }
     
 }

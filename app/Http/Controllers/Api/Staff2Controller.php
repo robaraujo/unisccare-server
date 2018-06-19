@@ -32,9 +32,12 @@ class Staff2Controller extends AuthenticateController
                 AVG(med_rating.rating) as avarage,
                 count(med_rating.rating) as total_ratings,
                 sum(case when `text` is null then 0 else 1 end) as total_comments
-            from staffs
-            left join med_rating
-                on staffs.id = med_rating.staff_id
+            from
+              staffs
+            left join
+              med_rating on staffs.id = med_rating.staff_id
+            WHERE
+              staff_admin IS NULL
             group by 
                 staffs.id
             order by avarage desc
@@ -64,6 +67,6 @@ class Staff2Controller extends AuthenticateController
 
     
     public function listStaffs() {
-        return Staff::get();        
+        return Staff::where('staff_admin', null)->with('team')->get();
     }
 }

@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('staff.layouts.app')
 
 @section('content')
     <section class="content-header">
         <h1>
-            Staff
+            Membro da equipe
         </h1>
     </section>
     <div class="content">
@@ -13,9 +13,7 @@
             <div class="box-body">
                 <div class="row">
                     {!! Form::open(['route' => 'staff.staff.store']) !!}
-
                         @include('staff.staff.fields')
-
                     {!! Form::close() !!}
                 </div>
             </div>

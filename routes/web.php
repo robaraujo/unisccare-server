@@ -75,4 +75,13 @@ Route::group(['middleware' => ['staff'], 'prefix' => 'staff'], function () {
 	Route::get('/schedules/{schedules}/edit', ['as'=> 'staff.schedules.edit', 'uses' => 'Staff\ScheduleController@edit']);
 
 	Route::get('/medRatings', ['as'=> 'staff.medRatings.index', 'uses' => 'Staff\MedRatingController@index']);
+
+	Route::get('staff/staff', ['as'=> 'staff.staff.index', 'uses' => 'Staff\StaffController@index']);
+	Route::post('staff/staff', ['as'=> 'staff.staff.store', 'uses' => 'Staff\StaffController@store']);
+	Route::get('staff/staff/create', ['as'=> 'staff.staff.create', 'uses' => 'Staff\StaffController@create']);
+	Route::put('staff/staff/{staff}', ['as'=> 'staff.staff.update', 'uses' => 'Staff\StaffController@update']);
+	Route::patch('staff/staff/{staff}', ['as'=> 'staff.staff.update', 'uses' => 'Staff\StaffController@update']);
+	Route::delete('staff/staff/{staff}', ['as'=> 'staff.staff.destroy', 'uses' => 'Staff\StaffController@destroy']);
+	Route::get('staff/staff/{staff}', ['as'=> 'staff.staff.show', 'uses' => 'Staff\StaffController@show']);
+	Route::get('staff/staff/{staff}/edit', ['as'=> 'staff.staff.edit', 'uses' => 'Staff\StaffController@edit']);
 });

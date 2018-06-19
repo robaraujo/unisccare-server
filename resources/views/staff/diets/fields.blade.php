@@ -38,7 +38,10 @@
 <!-- User Ids Field -->
 <div class="form-group col-sm-12 col-lg-12">
     {!! Form::label('user_id', 'Usuários:') !!}
-    {!! Form::select('user_id[]', $users, $selected_users, ['multiple'=>'multiple', 'class' => 'form-control']) !!}
+    {!! Form::select('user_id[]', $users, $selected_users, ['multiple'=>'multiple', 'class' => 'form-control', "id"=>"users-list"]) !!}
+        <small>Deixe em branco para disponibilizar para todos
+            <button type="button" class="btn btn-link inline" onclick="jQuery('#users-list').val('');">todos</button>
+        </small>
 </div>
 
 <!-- Active Field -->

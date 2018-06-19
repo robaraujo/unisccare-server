@@ -7,9 +7,10 @@ use App\Http\Requests\Staff\UpdateStaffRequest;
 use App\Repositories\Staff\StaffRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
-use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
+use Flash;
+use Auth;
 
 class StaffController extends AppBaseController
 {
@@ -29,7 +30,9 @@ class StaffController extends AppBaseController
      */
     public function index(Request $request)
     {
+        $staff = Auth::guard('staff')->user();
         $this->staffRepository->pushCriteria(new RequestCriteria($request));
+        $this->staffRepository = $this->staffRepository->findWhere(['staff_admin'=> $staff->id]);
         $staff = $this->staffRepository->all();
 
         return view('staff.staff.index')
