@@ -47,10 +47,14 @@ class Staff2Controller extends AuthenticateController
 
         // count times user rate
         $you_rate = MedRating::where('user_id', $this->user->id)->count();
+        $staffs = DB::select($ratings_sql);
 
-        $results = DB::select($ratings_sql);
+        foreach ($staffs as &$staff) {
+          $staff->team = Staff::where('staff_admin', $staff->id)->get();
+        }
+
         return response()->json([
-            'staffs'   => $results,
+            'staffs'   => $staffs,
             'you_rate'  => $you_rate
         ]);
     }
