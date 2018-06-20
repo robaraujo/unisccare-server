@@ -67,6 +67,6 @@ class Staff2Controller extends AuthenticateController
 
     
     public function listStaffs() {
-        return Staff::where('staff_admin', null)->with('team')->get();
+        return Staff::where('staff_admin', '')->orWhereNull('staff_admin')->with('team')->get();
     }
 }
