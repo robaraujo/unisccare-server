@@ -38,6 +38,8 @@ class Staff2Controller extends AuthenticateController
               med_rating on staffs.id = med_rating.staff_id
             WHERE
               staff_admin IS NULL
+            OR
+              staff_admin = ''
             group by 
                 staffs.id
             order by avarage desc
