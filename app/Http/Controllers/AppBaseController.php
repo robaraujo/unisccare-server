@@ -19,4 +19,17 @@ use Auth;
  */
 class AppBaseController extends Controller
 {
+
+	public function staff() {
+		return Auth::guard('staff')->user();
+	}
+
+	/**
+	 * Return if of master staff
+	 */
+	public function staffId() {
+		$staff = $this->staff();
+		return ($staff->staff_admin) ? $staff->staff_admin : $staff->id;
+	}
+
 }

@@ -11,6 +11,7 @@ use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use Flash;
 use Auth;
+use Hash;
 
 class StaffController extends AppBaseController
 {
@@ -30,9 +31,8 @@ class StaffController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
         $this->staffRepository->pushCriteria(new RequestCriteria($request));
-        $this->staffRepository = $this->staffRepository->findWhere(['staff_admin'=> $staff->id]);
+        $this->staffRepository = $this->staffRepository->findWhere(['staff_admin'=> $this->staffId()]);
         $staff = $this->staffRepository->all();
 
         return view('staff.staff.index')
@@ -58,10 +58,10 @@ class StaffController extends AppBaseController
      */
     public function store(CreateStaffRequest $request)
     {
-        $input = $request->all();
-
+        $input = $this->prepareInput($request->all());
+        $input['staff_admin'] = $this->staffId();
+        
         $staff = $this->staffRepository->create($input);
-
         Flash::success('Staff saved successfully.');
 
         return redirect(route('staff.staff.index'));
@@ -104,6 +104,7 @@ class StaffController extends AppBaseController
             return redirect(route('staff.staff.index'));
         }
 
+        $staff->access = explode(',', $staff->access);
         return view('staff.staff.edit')->with('staff', $staff);
     }
 
@@ -125,11 +126,21 @@ class StaffController extends AppBaseController
             return redirect(route('staff.staff.index'));
         }
 
-        $staff = $this->staffRepository->update($request->all(), $id);
+        $input = $this->prepareInput($request->all());
+        $staff = $this->staffRepository->update($input, $id);
 
         Flash::success('Staff updated successfully.');
-
         return redirect(route('staff.staff.index'));
+    }
+
+    private function prepareInput($input)
+    {    
+        $input['access'] = implode(',', $input['access']);
+        if ($input['password']) {
+            $input['password'] = Hash::make($input['password']);
+        }
+
+        return $input;
     }
 
     /**

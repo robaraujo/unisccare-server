@@ -11,7 +11,7 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($staff, ['route' => ['staff.staff.update', $staff->id], 'method' => 'patch']) !!}
+                   {!! Form::model($staff, ['route' => ['staff.staff.update', $staff->id], 'method' => 'patch', "autocomplete"=>"off"]) !!}
 
                         @include('staff.staff.fields')
 

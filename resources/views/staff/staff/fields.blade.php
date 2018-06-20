@@ -19,15 +19,16 @@
         </div>
 
         <!-- Password Field -->
+        <input type="password" style="opacity: 0;position: absolute;">
         <div class="form-group col-sm-6">
             {!! Form::label('password', 'Password:') !!}
-            {!! Form::password('password', ['class' => 'form-control']) !!}
+            {!! Form::password('password', ['class' => 'form-control',  "autocomplete"=>"off"]) !!}
         </div>
 
         <!-- Email Field -->
         <div class="form-group col-sm-6">
             {!! Form::label('access', 'Acessos:') !!}
-            {!! Form::select('unity', [
+            {!! Form::select('access[]', [
                   'users'=>'Usuários',
                   'reports'=>'Relatórios',
                   'chat'=>'Chat',

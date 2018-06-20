@@ -42,6 +42,7 @@ class Staff extends Model
         'gender',
         'staff_admin',
         'role',
+        'access',
         'clinic',
         'degree',
         'remember_token'
