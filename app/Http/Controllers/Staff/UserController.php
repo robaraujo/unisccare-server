@@ -52,7 +52,7 @@ class UserController extends AppBaseController
         $this->userRepository->pushCriteria(new RequestCriteria($request));
 
         if ($staff->id !== 1) {
-            $this->userRepository = $this->userRepository->findByField('staff_id', $staff->id);
+            $this->userRepository = $this->userRepository->findByField('staff_id', $this->staffId());
         }
 
         $users = $this->userRepository->all();
@@ -157,7 +157,7 @@ class UserController extends AppBaseController
 
             return redirect(route('staff.users.index'));
         }
-
+        
         $input = $this->formatInput($request->all());
         $user = $this->userRepository->update($input, $id);
 
@@ -197,6 +197,8 @@ class UserController extends AppBaseController
         if (isset($input['dt_end'])) {
             $input['dt_end'] =  implode('-', array_reverse(explode('/', $input['dt_end'])));
         }
+
+        $input['staff_id'] = $this->staffId();
         return $input;
     }
 

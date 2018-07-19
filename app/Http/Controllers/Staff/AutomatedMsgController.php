@@ -34,7 +34,7 @@ class AutomatedMsgController extends AppBaseController
         $this->automatedMsgRepository->pushCriteria(new RequestCriteria($request));
 
         if ($staff->id !== 1) {
-            $this->automatedMsgRepository = $this->automatedMsgRepository->findByField('staff_id', $staff->id);
+            $this->automatedMsgRepository = $this->automatedMsgRepository->findByField('staff_id', $this->staffId());
         }
 
         $automatedMsgs = $this->automatedMsgRepository->all();
@@ -62,7 +62,7 @@ class AutomatedMsgController extends AppBaseController
     public function store(CreateAutomatedMsgRequest $request)
     {
         $input = $request->all();
-        $input['staff_id'] = Auth::guard('staff')->user()->id;
+        $input['staff_id'] = $this->staffId();
         $automatedMsg = $this->automatedMsgRepository->create($input);
 
         Flash::success('Automated Msg saved successfully.');

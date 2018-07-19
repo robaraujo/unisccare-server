@@ -34,8 +34,7 @@ class ScheduleController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
-        $where = ['staff_id'=> $staff->id];
+        $where = ['staff_id'=> $this->staffId()];
 
         $this->scheduleRepository->pushCriteria(new RequestCriteria($request))->with('user');
         $this->scheduleRepository = $this->scheduleRepository->findWhere($where);
@@ -145,19 +144,17 @@ class ScheduleController extends AppBaseController
 
     private function getUsers()
     {
-        $staff = Auth::guard('staff')->user();
         $food_name = "CONCAT('#', id, ' ', first_name, ' ', last_name) AS name";
-        return User::where('staff_id', $staff->id)->select(DB::raw($food_name),'id')->pluck('name', 'id');
+        return User::where('staff_id', $this->staffId())->select(DB::raw($food_name),'id')->pluck('name', 'id');
     }
 
 
     private function formatInput($input)
     {
-        $staff = Auth::guard('staff')->user();
         $date = \DateTime::createFromFormat('d/m/Y H:i a', $input['date_date'].' '.$input['date_time']);
 
         $input['datehr'] =  $date->format('Y-m-d H:i:s');
-        $input['staff_id'] = $staff->id;
+        $input['staff_id'] = $this->staffId();
 
         return $input;
     }

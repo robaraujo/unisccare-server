@@ -34,7 +34,7 @@ class MedRatingController extends AppBaseController
         $this->medRatingRepository->pushCriteria(new RequestCriteria($request));
 
         if ($staff->id !== 1) {
-            $this->medRatingRepository = $this->medRatingRepository->findByField('staff_id', $staff->id);
+            $this->medRatingRepository = $this->medRatingRepository->findByField('staff_id', $this->staffId());
         }
 
         $medRatings = $this->medRatingRepository->all();

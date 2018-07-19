@@ -89,9 +89,8 @@ class ReportController extends AppBaseController
         $class = 'App\Models\Staff\\'.ucfirst($type);
         $result = null;
         $input = $request->all();
-        $staff = Auth::guard('staff')->user();
         $food_name = "CONCAT('#', id, ' ', first_name, ' ', last_name) AS name";
-        $users = User::where('staff_id', $staff->id)->select(DB::raw($food_name),'id')->pluck('name', 'id');
+        $users = User::where('staff_id', $this->staffId())->select(DB::raw($food_name),'id')->pluck('name', 'id');
 
         if (isset($input['date'], $input['user_id'])) {
             list($day, $month, $year) = explode('/', $input['date']);

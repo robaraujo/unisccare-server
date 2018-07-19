@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>BariUnisc</title>
+    <title>UniscCARE</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
     <meta name="csrf-token" content="{{ csrf_token() }}">
      <link rel="shortcut icon" href="{{{ asset('img/icon.png') }}}">
@@ -51,14 +51,14 @@
                 <span class="logo-mini">
                     <img src="{{ asset('/img/icon.png') }}" class="img-circle pt-1" alt="User Image"/>
                 </span>
-                <span class="logo-lg"><b>Bari</b>UNISC</span>
+                <span class="logo-lg"><b>Unisc</b>CARE</span>
             </a>
 
             <nav class="navbar navbar-static-top" role="navigation">
                 <a href="#sidebarWrapper" class="sidebar-toggle position-absolute" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <div class="logo-sm d-block d-md-none text-white"><b>Bari</b>UNISC</div>
+                <div class="logo-sm d-block d-md-none text-white"><b>Unisc</b>CARE</div>
             </nav>
         </header>
 
@@ -84,7 +84,7 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{!! url('/staff') !!}">
-                    BariUnisc
+                    UniscCARE
                 </a>
             </div>
 

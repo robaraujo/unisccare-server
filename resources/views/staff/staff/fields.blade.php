@@ -38,6 +38,7 @@
                   'medicines'=>'Medicamentos',
                   'schedules'=>'Compromissos',
                   'rates'=>'Avaliações',
+                  'staffs'=>'Sua Equipe',
                 ], null, ['class' => 'form-control', 'multiple'=>true]) !!}
         </div>
 

@@ -8,7 +8,7 @@
             </div>
             <div class="pull-left info">
                 @if (!Auth::guard('staff')->user())
-                    <p>BariUnisc</p>
+                    <p>UniscCARE</p>
                 @else
                     <p>{{ Auth::guard('staff')->user()->name}}</p>
                 @endif

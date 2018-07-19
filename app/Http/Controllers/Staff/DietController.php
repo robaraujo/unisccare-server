@@ -35,9 +35,8 @@ class DietController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
         $this->dietRepository->pushCriteria(new RequestCriteria($request));
-        $this->dietRepository = $this->dietRepository->findByField('staff_id', $staff->id);
+        $this->dietRepository = $this->dietRepository->findByField('staff_id', $this->staffId());
         $diets = $this->dietRepository->all();
 
         return view('staff.diets.index')
@@ -122,11 +121,10 @@ class DietController extends AppBaseController
 
     private function prepareFields($input)
     {
-        $staff = Auth::guard('staff')->user();
         $input['food_ids'] = implode(',', $input['food_id']);
         $input['food_qtts'] = implode(',', $input['food_qtt']);
         $input['user_ids'] = implode(',', $input['user_id']);
-        $input['staff_id'] = $staff->id;
+        $input['staff_id'] = $this->staffId();
 
         return $input;
     }
@@ -154,9 +152,8 @@ class DietController extends AppBaseController
 
     private function getUsers()
     {
-        $staff = Auth::guard('staff')->user();
         $food_name = "CONCAT('#', id, ' ', first_name, ' ', last_name) AS name";
-        return User::where('staff_id', $staff->id)->select(DB::raw($food_name),'id')->pluck('name', 'id');
+        return User::where('staff_id', $this->staffId())->select(DB::raw($food_name),'id')->pluck('name', 'id');
     }
 
     private function getFoods()

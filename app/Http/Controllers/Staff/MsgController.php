@@ -33,8 +33,7 @@ class MsgController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
-        $users = User::where('staff_id', $staff->id);
+        $users = User::where('staff_id', $this->staffId());
 
         return view('staff.msgs.index')
             ->with('users', $users);
@@ -48,8 +47,7 @@ class MsgController extends AppBaseController
      */
     public function users(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
-        $users = User::where('staff_id', $staff->id)->get();
+        $users = User::where('staff_id', $this->staffId())->get();
 
         foreach ($users as $key => $user) {
             $user->last_msg = Msg::where('user_id', $user->id)->latest()->first();
@@ -60,7 +58,6 @@ class MsgController extends AppBaseController
 
     public function list(Request $request)
     {
-        $staff = Auth::guard('staff')->user();
         $input = $request->all();
 
         if (!isset($input['user_id'], $input['last_msg'])) {
